@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    var overtime = (function() {
+        //console.log(arguments);
+        return function() {
+            //console.log(arguments);
+        }
+    })();
+
+    overtime(1);
+    overtime(2);
+    overtime(3);
+
+    var overtime1 = function() {
+    	console.log(arguments);
+         var args = [];
+        if (arguments.length === 0) {
+                var money = 0;
+                for (var i = 0, l = args.length; i < l; i++) {
+                    money += args[i];
+                }
+                return money;
+            } else {
+                [].push.apply(args, arguments);
+            }
+    }
+    overtime1(2);
+	overtime1(3);
+	console.log(overtime1());
+
+    var cost = (function() {
+        var args = [];
+        return function() {
+            if (arguments.length === 0) {
+                var money = 0;
+                for (var i = 0, l = args.length; i < l; i++) {
+                    money += args[i];
+                }
+                return money;
+            } else {
+                [].push.apply(args, arguments);
+            }
+        }
+    })();
+    cost(100); // 未真正求值
+    cost(200); // 未真正求值
+    cost(300); // 未真正求值
+    console.log(cost()); // 求值并输出：600
+    </script>
+</body>
+
+</html>
