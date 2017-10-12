@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 单一职责原则 就一个类（通常也包括对象和函数等）而言，应该仅有一个引起它变化的原因
+		// 给img赋src
+		var myImage=(function(){
+			var imgNode = document.createNode('img');
+			document.body.appendChild(imgNode);
+
+			return {
+				setSrc:function(src){
+					imgNode.src = src;
+				}
+			}
+		})();
+
+		//预加载
+		var proxyImage = (function(){
+			var img = new Image;
+			image.onload=function(){
+				myImage.setSrc(this.src);
+			};
+			return {
+				setSrc:function(src){
+					myImage.setSrc( 'loading.gif' );
+					img.src = src;
+				}
+			}
+		})();
+
+		proxyImage.setSrc( 'a.jpg' );
+	</script>
+</body>
+</html>

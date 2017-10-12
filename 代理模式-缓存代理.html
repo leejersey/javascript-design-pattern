@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var mult =function(){
+			console.log('开始计算');
+			var a=1;
+			for(var i = 0;i<arguments.lengt;i++){
+				a= a*arguments[i];
+			}
+			return a;
+		};
+
+		//代理缓存函数
+		var proxyMult = (function(){
+			var cache = {};
+			return function(){
+				var args = Array.prototype.join.call(arguments,',');
+				if(args in cache){
+					return args[cache];
+				}
+				return cache[ args ] = mult.apply( this, arguments );
+			}
+		})();
+
+		proxyMult(1,2,3,4);
+		proxyMult(1,2,3,4);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
