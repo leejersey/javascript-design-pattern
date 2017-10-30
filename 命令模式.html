@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>命令模式</title>
+</head>
+<body>
+	<script>
+		var setCommand = function(button,func){
+			button.onclick = function(){
+				func();
+			}
+		}
+
+		var MenuBar = {
+			refresh: function(){
+				console.log( '刷新菜单界面' );
+			}
+		};
+		var SubMenu = {
+			add: function(){
+				console.log( '增加子菜单' );
+			},
+			del: function(){
+				console.log( '删除子菜单' );
+			}
+		};
+		setCommand( button1, MenuBar.refresh );
+		setCommand( button2, SubMenu.add );
+		setCommand( button3, SubMenu.del );
+	</script>
+</body>
+</html>

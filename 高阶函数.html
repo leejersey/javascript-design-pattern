@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>高阶函数</title>
+</head>
+<body>
+	<script>
+		var map=function(fn, array){
+			var newArray=[];
+			for (var i = 0; i < array.length; i++) {
+			    newArray.push(
+			      fn(array[i])
+			    )
+			}
+			return newArray;
+		}
+
+		const square = (x) => x * x
+
+		console.log(map(square, [1, 2, 3, 4, 5]))
+	</script>
+</body>
+</html>

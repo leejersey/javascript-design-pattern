@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>高阶函数</title>
+</head>
+<body>
+	<script>
+		const map = (fn, array) => Array.prototype.map.call(array, fn)
+
+		// const map = function(fn,array){
+		// 	return Array.prototype.map.call(array, fn);
+		// }
+
+		const square = (x) => x * x
+
+		console.log([1, 2, 3, 4, 5].map(square))
+	</script>
+</body>
+</html>
